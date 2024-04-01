@@ -1,0 +1,39 @@
+
+<!-- adding header component -->
+<app-header (searchChanged)="onSearchTermChange($event)"></app-header>
+
+<div class="container mx-auto mt-4">
+    <div class="row">
+        <div class="col-sm-6 col-lg-3" *ngFor="let user of users | searchPipe: searchTerm | paginate : {
+            itemsPerPage: 4,
+            currentPage: page,
+            totalItems: totalLength
+          }">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-img-container">
+                        <img [src]="user.avatar" alt="avatar" class="card-img">
+                        <a class="details-button" (click)="userDetails(user.id)">Details</a>
+                    </div>
+                    <h5 class="userName">{{ user.first_name }} {{ user.last_name }}</h5>
+                    <p class="text-muted mb-1">{{ user.email }}</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<pagination-controls class="my-pagination text-center" (pageChange)="page = $event">
+</pagination-controls>
+
+<!-- adding spinner component -->
+<div *ngIf="!spinner" class=" spinner">
+    <h1 class="text-center">
+        Please wait ...
+    </h1>
+    <app-spinner></app-spinner>
+</div>

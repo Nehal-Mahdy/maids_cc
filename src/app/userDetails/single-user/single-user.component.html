@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<div class="container">
+  
+  <div
+    class="avatar"
+    [style.background-image]="
+      user && user.avatar ? 'url(' + user.avatar + ')' : ''
+    "
+  ></div>
+
+  <h1>{{ user?.first_name }} {{ user?.last_name }}</h1>
+  <h3>{{ user?.email }}</h3>
+  <h3>id: {{ user?.id }}</h3>
+  <p class="bio">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi deserunt
+    veniam voluptates itaque error vero at officiis. Tempore, dolor reiciendis
+  </p>
+  <div class="btnContainer">
+    <div>
+      <button class="btn btn-lg text-center" (click)="backToAllUsers()">
+        <span><i class="fa fa-arrow-left fa-3x"></i></span>
+      </button>
+    </div>
+  </div>
+</div>
